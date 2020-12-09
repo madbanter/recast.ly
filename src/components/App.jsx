@@ -9,9 +9,12 @@ class App extends React.Component {
     this.state = { videos: props.videoData, currentVideo: props.videoData[0] };
   }
 
-  updateCurrentVideo(vidObj) {
-    // this.setState( state => { currentVideo: vidObj; } );
-    this.setState({currentVideo: vidObj});
+  updateCurrentVideo(videoObj) {
+    this.setState({currentVideo: videoObj});
+  }
+
+  updateVideos(videosObj) {
+    this.setState({videos: videosObj});
   }
 
   render() {
@@ -19,7 +22,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search />
+            <Search updateVideos={this.updateVideos.bind(this)}/>
           </div>
         </nav>
         <div className="row">
